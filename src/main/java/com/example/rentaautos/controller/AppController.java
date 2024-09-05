@@ -70,6 +70,17 @@ public class AppController {
         model.addAttribute("listaSeguros",seguros);
         return "listaSeguros";
     }
+    //Eliminar Seguros
+    @GetMapping("/eliminarSeguro")
+    public String eliminarSeguro(@RequestParam("idSeguro") int idSeguro) {
+        for (Seguro s : seguros) {
+            if (s.getIdSeguro() == idSeguro) {
+                seguros.remove(s);
+                break;
+            }
+        }
+        return "listaSeguros";
+    }
     //Formulario de Registro de Sedes
     @GetMapping("/registroSedes")
     public String registroSedes() {
